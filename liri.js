@@ -16,6 +16,31 @@ var command = process.argv[2];
 var input = process.argv[3];
 
 
+//concert this function
+function concertIt(bandQuery) {
+//omdb request
+var queryUrl = "https://rest.bandsintown.com/artists/" + bandQuery + "/events?app_id=codingbootcamp";
+console.log(queryUrl);
+request(queryUrl, function(error, response, body){
+    if(!error && response.statusCode === 200){
+        var concertData = JSON.parse(body);
+        var concertDT = concertData[0].datetime;
+        var momentDT = moment().format('L');
+
+        console.log("-------------");
+//venue
+        console.log("venue name: " + concertData[0].venue.name +
+//location        
+    "\nVenue location: " + concertData[0].venue.city + "," + concertData[0].venue.country +
+//date of event
+    "\nDate of event: " + momentDT + "\n-----------");
+    };
+  });
+}
+
+concertIt();
+
+
 //spotify this song function
 function spotifyIt(musicSearch) {
 //default song to display 
@@ -32,11 +57,11 @@ spotify.search({type: 'track', query: musicSearch}, function (err, data){
 //artist
         console.log("artist: " + musicQuery.artists[0].name + 
 //song name        
-        "\nsong name: " + musicQuery.name + 
+        "\nSong name: " + musicQuery.name + 
 //preview link
-        "\nlink to song: " + musicQuery.preview_url +
+        "\nLink to song: " + musicQuery.preview_url +
 //album        
-        "\nalbum name: " + musicQuery.album.name +
+        "\nAlbum name: " + musicQuery.album.name +
         "\n---------");        
         }
      };
