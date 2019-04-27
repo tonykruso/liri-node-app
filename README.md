@@ -1,5 +1,8 @@
 # liri-node-app
 
+example video of how app works:
+https://drive.google.com/file/d/18GVRRO7LCtjSwlt9rMCi0uK7AZMEVxt9/view
+
 in the command line type 'node liri.js spotify-this-song Ace of Spades' (you can enter any song, does not need to be ace of spades).
 this will pull up the song name, artist, album and a link to the song.
 
